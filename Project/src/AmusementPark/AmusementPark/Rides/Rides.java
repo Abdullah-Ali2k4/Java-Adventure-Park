@@ -12,6 +12,13 @@ public class Rides {
         this.ageLimit = ageLimit;
         this.ticketPrice = ticketPrice;
     }
+    public Rides(Rides r) {
+        r.name = name;
+        r.level = level;
+        r.ageLimit = ageLimit;
+        r.ticketPrice = ticketPrice;
+    }
+
     public void info(){
         System.out.println(name.toUpperCase()+"\nLevel "+level+"\nAge Limit "+ageLimit+"\nTicket Price "+ticketPrice+"\n\n");
     }

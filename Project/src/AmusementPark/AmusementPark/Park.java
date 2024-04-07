@@ -68,10 +68,10 @@ public class Park {
             if (name.equals(ride.getName())){
                 if(visitor.getAge()>=ride.getAgeLimit()){
                     System.out.println("Press Y To Purchase "+name+" Ticket for rupees "+ride.getTicketPrice());
-
                     if(input.next().toLowerCase().equals("y")){
                         System.out.println("Enjoy your Ride!!!");
                         if(ride instanceof SpecialRides){
+                            ((SpecialRides) ride).extraCharges();
                            var Ride=(SpecialRides)ride;
                             Ride.ActivateSpecial();
                         }
