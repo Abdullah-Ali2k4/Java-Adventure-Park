@@ -1,3 +1,5 @@
+package AmusementPark;
+
 import AmusementPark.Park;
 import AmusementPark.Rides.Rides;
 import AmusementPark.Rides.SpecialRides;
