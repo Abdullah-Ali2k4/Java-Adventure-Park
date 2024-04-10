@@ -1,14 +1,15 @@
 package AmusementPark;
-import AmusementPark.Rides.Rides;
-    public class Visitor {
+
+import java.util.ArrayList;
+
+public class Visitor {
         private String name;
         private byte age;
-        private int accessId;
+        private ArrayList<String> ticket =new ArrayList<>();
         private Boolean access;
         public Visitor(String name) {
             this.name = name;
         }
-
         public Boolean getAccess() {
             return access;
         }
@@ -25,6 +26,10 @@ import AmusementPark.Rides.Rides;
         public void setAge(byte age) {
             this.age = age;
         }
-
-
+        public void addTicket(String ride){
+            ticket.add(ride);
+        }
+        public ArrayList<String> getTickets(){
+            return ticket;
+        }
     }

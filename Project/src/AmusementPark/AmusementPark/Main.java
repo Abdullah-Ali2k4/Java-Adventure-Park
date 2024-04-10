@@ -1,24 +1,27 @@
 package AmusementPark;
 
-import AmusementPark.Park;
-import AmusementPark.Rides.Rides;
-import AmusementPark.Rides.SpecialRides;
-import AmusementPark.Visitor;
+import AmusementPark.Park.Park;
+import AmusementPark.Rides.Ride;
+import AmusementPark.Rides.SpecialRide;
+import AmusementPark.Ticket.TicketBooth;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        ArrayList<Visitor> visitors=new ArrayList<>();
+//        Scanner input = new Scanner(System.in);
+//        ArrayList<Visitor> visitors=new ArrayList<>();
         var adventureLand = new Park("ADVENTURE LAND ");
-
-        adventureLand.addRide(new Rides("Roller Coaster",(byte) 6,(byte)15,200));
-        adventureLand.addRide(new Rides("Bumper cars",(byte) 2,(byte)11,150));
-        adventureLand.addRide(new Rides("Pendulum",(byte) 9,(byte)18,350));
-        adventureLand.addRide(new SpecialRides("Roller Coaster s",(byte) 9,(byte)18,350,"Moves at 200kph speed"));
+        adventureLand.addRide(new Ride("Bumper cars",(byte) 2,(byte)11,150));
+        adventureLand.addRide(new Ride("Pendulum",(byte) 9,(byte)18,350));
+        adventureLand.addRide(new SpecialRide("Roller Coaster",(byte) 9,(byte)18,350,"Moves at 200kph speed"));
         adventureLand.welcome();
-        adventureLand.getRide("Roller Coaster s");
+        TicketBooth ticketBooth=new TicketBooth(adventureLand);
+        ticketBooth.getTicket("Pendulum");
+        ticketBooth.getTicket("Pendqwwe");
+        ticketBooth.getTicket("Roller Coaster");
+        adventureLand.displayTickets();
+        adventureLand.availRide("Pendulum");
     }
 }

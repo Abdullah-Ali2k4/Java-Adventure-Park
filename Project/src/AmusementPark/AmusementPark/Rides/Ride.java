@@ -1,18 +1,18 @@
 package AmusementPark.Rides;
 
-public class Rides {
+public class Ride {
     private String name;
     private byte level;
     private byte ageLimit;
     private int ticketPrice;
 
-    public Rides(String name, byte level, byte ageLimit, int ticketPrice) {
+    public Ride(String name, byte level, byte ageLimit, int ticketPrice) {
         this.name = name;
         this.level = level;
         this.ageLimit = ageLimit;
         this.ticketPrice = ticketPrice;
     }
-    public Rides(Rides r) {
+    public Ride(Ride r) {
         r.name = name;
         r.level = level;
         r.ageLimit = ageLimit;
