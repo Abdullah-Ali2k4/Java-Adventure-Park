@@ -1,6 +1,8 @@
 package AmusementPark.Rides;
 
 public class SpecialRide extends Ride implements SpecialFeature{
+
+
     private String specialFeature;
     public SpecialRide(String name, byte level, byte ageLimit, int ticketPrice, String specialFeature){
         super(name,level,ageLimit,ticketPrice);
@@ -17,5 +19,8 @@ public class SpecialRide extends Ride implements SpecialFeature{
     @Override
     public void extraCharges() {
         System.out.println("To get Special features pay "+getTicketPrice()*.5+" rupees extra " );
+    }
+    public String getSpecialFeature() {
+        return specialFeature;
     }
 }

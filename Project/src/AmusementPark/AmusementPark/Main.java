@@ -15,7 +15,7 @@ public class Main {
         var adventureLand = new Park("ADVENTURE LAND ");
         adventureLand.addRide(new Ride("Bumper cars",(byte) 2,(byte)11,150));
         adventureLand.addRide(new Ride("Pendulum",(byte) 9,(byte)18,350));
-        adventureLand.addRide(new SpecialRide("Roller Coaster",(byte) 9,(byte)18,350,"Moves at 200kph speed"));
+        adventureLand.addRide(new SpecialRide("Roller Coaster",(byte) 9,(byte)20,350,"Speed of 200kph"));
         adventureLand.welcome();
         TicketBooth ticketBooth=new TicketBooth(adventureLand);
         ticketBooth.getTicket("Pendulum");
@@ -23,5 +23,6 @@ public class Main {
         ticketBooth.getTicket("Roller Coaster");
         adventureLand.displayTickets();
         adventureLand.availRide("Pendulum");
+        adventureLand.displayTickets();
     }
 }

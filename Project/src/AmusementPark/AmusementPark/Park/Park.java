@@ -1,6 +1,7 @@
 package AmusementPark.Park;
 
 import AmusementPark.Rides.Ride;
+import AmusementPark.Rides.SpecialRide;
 import AmusementPark.Visitor;
 
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class Park {
     public void welcome() {
         var input = new Scanner(System.in);
         System.out.println("Welcome to " + name);
-        System.out.print("Press any key to proceed ");
+        System.out.print("Press any key to proceed :");
         input.next();
         do {
-            System.out.println("To View Rides Press R\nTo Access-Card Press A");
+            System.out.println("To View Rides Press R\nTo Get Access-Card Press A");
             String a = input.next();
             if (a.compareToIgnoreCase("A") == 0) {
                 addVisitor();
@@ -52,26 +53,35 @@ public class Park {
             System.out.println(s);
         }
     }
-
     public void addRide(Ride ride) {
         rides.add(ride);
     }
     public void availRide(String r){
-        int counter=0;
+        int counter =0;
         for (String ticket:visitor.getTickets()){
-            counter++;
             for (Ride ride:rides){
                 if(ride.getName().equals(r)){
+                    rideUpgrade(ride);
                     System.out.println("Enjoy Your Ride");
                     visitor.getTickets().remove(counter);
                 }
             }
+            counter++;
         }
     }
 
     private void displayRides() {
         for (Ride ride : rides) {
             ride.info();
+        }
+    }
+    public boolean checkAge(Ride ride){
+        return ride.getAgeLimit() <= visitor.getAge();
+    }
+    public void rideUpgrade(Ride ride){
+        if (ride instanceof SpecialRide specialRide){
+            System.out.println("You can get upgrade your ride to get "+specialRide.getSpecialFeature()+" at rupee ");
+            specialRide.extraCharges();
         }
     }
 }
