@@ -1,4 +1,4 @@
-package AmusementPark;
+package AmusementPark.Vistor;
 
 import java.util.ArrayList;
 

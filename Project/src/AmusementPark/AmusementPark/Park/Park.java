@@ -2,7 +2,7 @@ package AmusementPark.Park;
 
 import AmusementPark.Rides.Ride;
 import AmusementPark.Rides.SpecialRide;
-import AmusementPark.Visitor;
+import AmusementPark.Vistor.Visitor;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -43,8 +43,11 @@ public class Park {
         System.out.print("Enter your age : ");
         visitor.setAge(input.nextByte());
         System.out.println("To Enter The Park You Need To Purchase Access Card\nPress Y To Get The Card");
-        if (input.next().compareToIgnoreCase("y") == 0)
+        if (input.next().compareToIgnoreCase("y") == 0) {
             visitor.setAccess(true);
+        }
+
+
         else
             visitor.setAccess(false);
     }
@@ -59,18 +62,19 @@ public class Park {
     public void availRide(String r){
         int counter =0;
         for (String ticket:visitor.getTickets()){
-            for (Ride ride:rides){
-                if(ride.getName().equals(r)){
-                    rideUpgrade(ride);
+                System.out.println(r+" "+ticket);
+                if(ticket.equals(r)){
+                    System.out.println("test");
                     System.out.println("Enjoy Your Ride");
                     visitor.getTickets().remove(counter);
+                    break;
                 }
-            }
             counter++;
-        }
+            }
+         System.out.println("Ride Not Found");
     }
 
-    private void displayRides() {
+    public void displayRides() {
         for (Ride ride : rides) {
             ride.info();
         }
@@ -78,10 +82,18 @@ public class Park {
     public boolean checkAge(Ride ride){
         return ride.getAgeLimit() <= visitor.getAge();
     }
-    public void rideUpgrade(Ride ride){
-        if (ride instanceof SpecialRide specialRide){
-            System.out.println("You can get upgrade your ride to get "+specialRide.getSpecialFeature()+" at rupee ");
+    public boolean rideUpgrade(Ride ride){
+        if (ride instanceof SpecialRide specialRide) {
+            System.out.println("You can get upgrade your ride to get " + specialRide.getSpecialFeature() + " at rupee ");
             specialRide.extraCharges();
+            System.out.println("Enter [y] to upgrade \nAny key to Avoid upgrade");
+            if (input.next().compareToIgnoreCase("y") == 0) {
+                return true;
+            } else return false;
+
+        }else {
+            System.out.println("This ride doesn't have any upgrading options for now");
+            return false;
         }
     }
 }

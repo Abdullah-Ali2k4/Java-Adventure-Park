@@ -10,7 +10,9 @@ public class TicketBooth{
         for (Ride r: park.getRide()){
             if(r.getName().contains(ride)){
                 if (park.checkAge(r)) {
+                    System.out.println("your bill "+r.getTicketPrice());
                     park.getVisitor().addTicket(r.getName());
+                    park.rideUpgrade(r);
                     return true;
                 }else{
                     System.out.println("You are to young to ride this!!");
